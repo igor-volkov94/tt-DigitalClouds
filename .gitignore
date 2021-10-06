@@ -1,0 +1,83 @@
+.vscode
+.access.php
+/bitrix/
+/desktop_app/
+/pub/
+/upload/
+
+robots.txt
+storage.php
+urlrewrite.php
+yandex_*.html
+google*.html
+sitemap*.xml
+.htsecure
+.htaccess
+.htpasswd
+
+/local/var/logs/*
+/local/var/script/*
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+*.log
+*.sql
+*.txt
+*.xml
+*.dt
+*.swp
+*.swo
+*.DS_Store
+*.swf
+*.old
+
+# Maven
+target/
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# NetBeans specific
+nbproject/*
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# исключаем оттуда папку php_interface и файл .settings.php
+
+!/bitrix/php_interface/
+!/bitrix/.settings.php
+
+# игнорируем папку html
+/html/
+
+# игнорируем папки пакетных менеджеров
+
+/node_modules/
+/local/templates/**/frontend/bower_components
+/local/templates/**/frontend/node_modules
+/local/php_interface/classes
+/local/php_interface/**/vendor/*

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="vh394.timeweb.ru" id="5f7c5592-50da-42f1-ba9a-f87548bc945a" port="22" customName="TaskManager" nameFormat="CUSTOM" username="ct70019">
+        <option name="customName" value="TaskManager" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

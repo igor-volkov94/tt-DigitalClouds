@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3c929603-3c21-49ef-9fdd-69a720644eb6" name="TaskManager">
+        <fileTransfer rootFolder="/home/c/ct70019/public_html/" accessType="SFTP" host="vh394.timeweb.ru" port="22" sshConfigId="5f7c5592-50da-42f1-ba9a-f87548bc945a" sshConfig="TaskManager">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
