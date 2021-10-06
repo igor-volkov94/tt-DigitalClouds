@@ -7,6 +7,8 @@
 
 $APPLICATION->SetTitle("test"); ?>
 
+
+
     <?php
 /*        $APPLICATION->IncludeComponent(
             "bitrix:form.result.new",
@@ -19,8 +21,4 @@ $APPLICATION->SetTitle("test"); ?>
                 "SUCCESS_URL" => "/local/ajax/modal/addUser.php"
             )
         )
-    */?>
-
-
-
-<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+    */?><?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
