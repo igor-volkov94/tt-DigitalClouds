@@ -1,0 +1,17 @@
+.padding-up {
+    padding-top: 100px;
+}
+
+.task_edit {
+    padding-right: 20px;
+}
+
+.task_action {
+    text-decoration: none;
+    color: #000;
+}
+
+.task_action:hover {
+    text-decoration: none;
+    color: #0d6efd;
+}
