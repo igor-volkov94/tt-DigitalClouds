@@ -1,16 +1,16 @@
 $(document).ready(function (){
 
-    $('.js-add-user-form').on('submit', function (e) {
+    $('.js-user-form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/local/ajax/modal/addUser.php',
+            url: '/local/ajax/modal/modalUser.php',
             method: 'POST',
             data: $(this).serializeArray(),
             dataType: 'json',
             success: function (res) {
 
-                if (res.success == "added") {
-                    $('.modal-windows').empty().prepend("<div class=\"ui-alert ui-alert-success\"><span class=\"ui-alert-message\"><strong>Внимание!</strong>Пользователь успешно добавлен.</span></div>")
+                if (res.success == "Y") {
+                    $('.modal-windows').empty().prepend(res.message);
 
                     $.ajax({
                         url: '',

@@ -1,6 +1,6 @@
 <?php
-$MESS["TASK_ID"] = "id";
-$MESS["TASK_USER"] = "Исполнитель";
-$MESS["TASK_POSITION"] = "Должность";
-$MESS["TASK_ACTION"] = "Действия";
-$MESS["TASK_ADD"] = "Добавить";
+$MESS["USER_ID"] = "id";
+$MESS["USER_USER"] = "Исполнитель";
+$MESS["USER_POSITION"] = "Должность";
+$MESS["USER_ACTION"] = "Действия";
+$MESS["USER_ADD"] = "Добавить";

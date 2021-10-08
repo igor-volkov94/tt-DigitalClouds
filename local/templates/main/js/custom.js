@@ -2,9 +2,9 @@ $(function() {
     //открытие формы
     $(document).on("click", ".js_modal", function(e) {
         e.preventDefault();// отменяем переход по ссылке
-
+        var url = $(this).attr('href');
         $.ajax({
-            url: "/local/ajax/modal/addUser.php",
+            url: url,
             type: "POST",
             data: {},
             success: function(data) {

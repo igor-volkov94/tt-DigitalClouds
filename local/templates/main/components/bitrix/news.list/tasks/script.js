@@ -1,6 +1,6 @@
 $(document).ready(function (){
 
-    $('.user_delete').on('click', function (e) {
+    $('.task_delete').on('click', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
 
@@ -8,14 +8,14 @@ $(document).ready(function (){
             url: url,
             method: 'POST',
             data: {
-                id: $(this).attr('data-user-id'),
-                fullName: $(this).attr('data-user-fullName')
+                id: $(this).attr('data-task-id'),
+                name: $(this).attr('data-task-name')
             },
             dataType: 'json',
             success: function (res) {
 
                 if (res.delete == "Y") {
-                    var message = "<div class=\"ui-alert ui-alert-success js-alert\"><span class=\"ui-alert-message\">Пользователь "+ res.fullName + " удален.</span></div>";
+                    var message = "<div class=\"ui-alert ui-alert-success js-alert\"><span class=\"ui-alert-message\">Задача "+ res.name + " удалена.</span></div>";
 
                     $('.padding-up').prepend(message);
 
@@ -25,8 +25,8 @@ $(document).ready(function (){
                         data: $(this).serializeArray(),
                         dataType: 'html',
                         success: function (res) {
-                            var a = $('.js-line-user', res);
-                            $('.js-line-user').html(a.html());
+                            var a = $('.js-line-task', res);
+                            $('.js-line-task').html(a.html());
                         }
                     })
 
@@ -34,7 +34,7 @@ $(document).ready(function (){
                         $(".js-alert").remove();
                     }, 3000);
                 } else {
-                    var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Пользователь "+ res.fullName + " не удален.</span></div>";
+                    var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Задача "+ res.name + " не удалена.</span></div>";
                     $('.padding-up').prepend(messageError);
                 }
 

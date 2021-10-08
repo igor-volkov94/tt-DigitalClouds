@@ -19,14 +19,17 @@ use Bitrix\Main\Localization\Loc;
 <table class="table table-hover">
     <thead>
     <tr>
-        <th><?=Loc::getMessage("TASK_ID");?></th>
-        <th><?=Loc::getMessage("TASK_USER");?></th>
-        <th><?=Loc::getMessage("TASK_POSITION");?></th>
-        <th><?=Loc::getMessage("TASK_ACTION");?></th>
+        <th><?=Loc::getMessage("USER_ID");?></th>
+        <th><?=Loc::getMessage("USER_USER");?></th>
+        <th><?=Loc::getMessage("USER_POSITION");?></th>
+        <th><?=Loc::getMessage("USER_ACTION");?></th>
     </tr>
     </thead>
     <tbody class="js-line-user">
     <?php foreach ($arResult["USERS"] as $user): ?>
+
+    <?php $getParams = "?action=edit&id={$user['ID']}&name={$user['NAME']}&lastName={$user['LAST_NAME']}&workPosition={$user['WORK_POSITION']}"; ?>
+
         <tr>
             <th scope="row">
                 <?=$user['ID']?>
@@ -38,10 +41,10 @@ use Bitrix\Main\Localization\Loc;
                 <?=$user['WORK_POSITION']?>
             </td>
             <td>
-                <a href="" class="task_action task_edit" data-user-id="<?=$user['ID']?>">
+                <a href="/local/ajax/modal/modalUser.php<?=$getParams;?>" class="action_btn user_edit js_modal">
                     <?php include 'local/templates/main/css/edit.svg';?>
                 </a>
-                <a href="" class="task_action task_delete" data-user-id="<?=$user['ID']?>" data-user-fullName="<?=$user['FULL_NAME']?>">
+                <a href="/local/ajax/deleteUser.php" class="action_btn user_delete" data-user-id="<?=$user['ID']?>" data-user-fullName="<?=$user['FULL_NAME']?>">
                     <?php include 'local/templates/main/css/delete.svg';?>
                 </a>
             </td>
@@ -50,7 +53,5 @@ use Bitrix\Main\Localization\Loc;
     </tbody>
 </table>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <a href="" class="footer-menu__callback js_modal btn btn-success btn-lg">
-        <?=Loc::getMessage("TASK_ADD");?>
-    </a>
+    <a href="/local/ajax/modal/modalUser.php?action=add" class="footer-menu__callback js_modal btn btn-success btn-lg"><?=Loc::getMessage("USER_ADD");?></a>
 </div>

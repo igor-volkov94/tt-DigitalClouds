@@ -2,16 +2,16 @@
     padding-top: 100px;
 }
 
-.task_edit {
-    padding-right: 20px;
-}
-
-.task_action {
+.action_btn {
     text-decoration: none;
     color: #000;
 }
 
-.task_action:hover {
+.action_btn:first-child {
+    padding-right: 15px;
+}
+
+.action_btn:hover {
     text-decoration: none;
     color: #0d6efd;
 }

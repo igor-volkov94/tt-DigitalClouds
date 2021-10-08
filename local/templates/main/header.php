@@ -45,7 +45,6 @@ use Bitrix\Main\Localization\Loc;
 
         <!-- Custom styles for this template -->
         <?php Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/custom.css') ?>
-        <?php Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/form-validation.css') ?>
         <?php Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/list-groups.css') ?>
 
     </head>

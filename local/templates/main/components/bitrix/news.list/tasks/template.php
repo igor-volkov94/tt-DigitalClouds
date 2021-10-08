@@ -26,13 +26,19 @@ use Bitrix\Main\Localization\Loc;
         <th><?=Loc::getMessage("TASK_ACTION");?></th>
     </tr>
     </thead>
-    <tbody>
-    <?php foreach ($arResult['ITEMS'] as $item): ?>
+    <tbody class="js-line-task">
+    <?php foreach ($arResult['ITEMS'] as $task): ?>
+
+        <?php $getParams = "?action=edit&id={$task['ID']}&taskName={$task['NAME']}&taskUsers={$task['TASKS_USERS']}&taskStatus={$task['TASK_STATUS']}"; ?>
         <tr>
-            <th scope="row"><?= $item['ID'] ?></th>
-            <td><?= $item['NAME'] ?></td>
+            <th scope="row">
+                <?=$task['ID']?>
+            </th>
             <td>
-                <?php foreach ($item['PROPERTIES']['TASKS_USERS']['VALUE'] as $users): ?>
+                <?=$task['NAME']?>
+            </td>
+            <td>
+                <?php foreach ($task['PROPERTIES']['TASKS_USERS']['VALUE'] as $users): ?>
                     <?php
                     $rsUser = CUser::GetByID($users);
                     $arUser = $rsUser->Fetch();
@@ -40,12 +46,14 @@ use Bitrix\Main\Localization\Loc;
                     ?>
                 <?php endforeach; ?>
             </td>
-            <td><?= $item['PROPERTIES']['TASKS_STATUS']['VALUE'] ?></td>
             <td>
-                <a href="#" class="task_action task_edit">
+                <?=$task['PROPERTIES']['TASKS_STATUS']['VALUE']?>
+            </td>
+            <td>
+                <a href="/local/ajax/modal/modalTask.php<?=$getParams;?>" class="action_btn task_edit js_modal">
                     <?php include 'local/templates/main/css/edit.svg';?>
                 </a>
-                <a href="#" class="task_action">
+                <a href="/local/ajax/deleteTask.php" class="action_btn task_delete" data-task-id="<?=$task['ID']?>" data-task-name="<?=$task['NAME']?>">
                     <?php include 'local/templates/main/css/delete.svg';?>
                 </a>
             </td>
@@ -54,5 +62,5 @@ use Bitrix\Main\Localization\Loc;
     </tbody>
 </table>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-success btn-lg" type="submit"><?=Loc::getMessage("TASK_ADD"); ?></button>
+    <a href="/local/ajax/modal/modalTask.php?action=add" class="footer-menu__callback js_modal btn btn-success btn-lg"><?=Loc::getMessage("TASK_ADD");?></a>
 </div>
