@@ -38,13 +38,12 @@ if (isset($_POST)) {
         }
     }
 
-    if (!$error || empty($arTaskUser)) {
+    if (!$error && empty($arTaskUser)) {
         CUser::Delete($_POST['id']);
         $arResult = [ "delete" => "Y", "fullName" => $_POST["fullName"] ];
-        echo json_encode($arResult);
     } else {
         $arResult = [ "delete" => "N", "fullName" => $_POST["fullName"] ];
-        echo json_encode($arResult);
     }
+    echo json_encode($arResult);
 
 }
