@@ -64,7 +64,7 @@ class BModalTask extends CBitrixComponent
             if ($PRODUCT_ID) {
                 $arResult = array(
                     "success" => "Y",
-                    "message" => "<div class=\"ui-alert ui-alert-success\"><span class=\"ui-alert-message\">Задача успешно изменена.</span></div>",
+                    "message" => "<div class=\"ui-alert ui-alert-success\"><span class=\"ui-alert-message\">Задача успешно изменена.</span></div>"
                 );
             } else {
                 $arResult = array('success' => "error", "error" => $task->LAST_ERROR);

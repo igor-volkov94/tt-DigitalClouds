@@ -30,7 +30,7 @@ use Bitrix\Main\Localization\Loc;
 
     <?php $getParams = "?action=edit&id={$user['ID']}&name={$user['NAME']}&lastName={$user['LAST_NAME']}&workPosition={$user['WORK_POSITION']}"; ?>
 
-        <tr>
+        <tr id="user_<?=$user['ID']?>">
             <th scope="row">
                 <?=$user['ID']?>
             </th>

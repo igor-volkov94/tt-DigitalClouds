@@ -2,6 +2,7 @@
 
 /**
  * @var array $arResult
+ * @var array $arParams
  * @var CBitrixComponentTemplate $this
  * @var CatalogElementComponent $component
  */
@@ -15,4 +16,13 @@ while($arUser = $rsUser->Fetch()) {
         "FULL_NAME" => $arUser['NAME'] . " " . $arUser['LAST_NAME'],
         "WORK_POSITION" => $arUser['WORK_POSITION']
     );
+}
+
+$property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>2, "CODE"=>"TASKS_STATUS"));
+while($enum_fields = $property_enums->GetNext())
+{
+    $arResult['STATUS_SELECT'][] = [
+        "VALUE" => $enum_fields["ID"],
+        "NAME" => $enum_fields["VALUE"]
+    ];
 }

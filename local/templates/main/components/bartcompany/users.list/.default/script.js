@@ -3,6 +3,7 @@ $(document).ready(function (){
     $('.user_delete').on('click', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
+        var user = $(this).attr('data-user-id');
 
         $.ajax({
             url: url,
@@ -25,16 +26,15 @@ $(document).ready(function (){
                         data: $(this).serializeArray(),
                         dataType: 'html',
                         success: function (res) {
-                            var a = $('.js-line-user', res);
-                            $('.js-line-user').html(a.html());
+                            $('#user_'+ user).remove();
                         }
                     })
 
                     setTimeout(function () {
                         $(".js-alert").remove();
-                    }, 3000);
+                    }, 2000);
                 } else {
-                    var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Пользователь "+ res.fullName + " не удален.</span></div>";
+                    var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Пользователь "+ res.fullName + " занят в задаче.</span></div>";
                     $('.padding-up').prepend(messageError);
                 }
 

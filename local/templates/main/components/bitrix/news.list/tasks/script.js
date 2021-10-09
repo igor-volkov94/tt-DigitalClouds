@@ -3,6 +3,7 @@ $(document).ready(function (){
     $('.task_delete').on('click', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
+        var task = $(this).attr('data-task-id');
 
         $.ajax({
             url: url,
@@ -25,14 +26,13 @@ $(document).ready(function (){
                         data: $(this).serializeArray(),
                         dataType: 'html',
                         success: function (res) {
-                            var a = $('.js-line-task', res);
-                            $('.js-line-task').html(a.html());
+                            $('#task_'+ task).remove();
                         }
                     })
 
                     setTimeout(function () {
                         $(".js-alert").remove();
-                    }, 3000);
+                    }, 2000);
                 } else {
                     var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Задача "+ res.name + " не удалена.</span></div>";
                     $('.padding-up').prepend(messageError);

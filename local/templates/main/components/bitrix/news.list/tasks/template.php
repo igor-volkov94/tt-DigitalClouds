@@ -14,6 +14,7 @@ $this->setFrameMode(true);
 
 use Bitrix\Main\UserTable;
 use Bitrix\Main\Localization\Loc;
+
 ?>
 
 <table class="table table-hover">
@@ -27,38 +28,42 @@ use Bitrix\Main\Localization\Loc;
     </tr>
     </thead>
     <tbody class="js-line-task">
-    <?php foreach ($arResult['ITEMS'] as $task): ?>
+        <?php foreach ($arResult['ITEMS'] as $task): ?>
 
-        <?php $getParams = "?action=edit&id={$task['ID']}&taskName={$task['NAME']}&taskUsers={$task['TASKS_USERS']}&taskStatus={$task['TASK_STATUS']}"; ?>
-        <tr>
-            <th scope="row">
-                <?=$task['ID']?>
-            </th>
-            <td>
-                <?=$task['NAME']?>
-            </td>
-            <td>
-                <?php foreach ($task['PROPERTIES']['TASKS_USERS']['VALUE'] as $users): ?>
+            <tr id="task_<?=$task['ID']?>">
+                <th scope="row">
+                    <?=$task['ID']?>
+                </th>
+                <td>
+                    <?=$task['NAME']?>
+                </td>
+                <td>
+                    <?php foreach ($task['PROPERTIES']['TASKS_USERS']['VALUE'] as $users): ?>
+                        <?php
+                        $rsUser = CUser::GetByID($users);
+                        $arUser = $rsUser->Fetch();
+                        echo $arUser['NAME'] . " " . $arUser['LAST_NAME'] . "</br>";
+                        ?>
+                    <?php endforeach; ?>
+                </td>
+                <td>
+                    <?=$task['PROPERTIES']['TASKS_STATUS']['VALUE']?>
+                </td>
+                <td>
+
                     <?php
-                    $rsUser = CUser::GetByID($users);
-                    $arUser = $rsUser->Fetch();
-                    echo $arUser['NAME'] . " " . $arUser['LAST_NAME'] . "</br>";
-                    ?>
-                <?php endforeach; ?>
-            </td>
-            <td>
-                <?=$task['PROPERTIES']['TASKS_STATUS']['VALUE']?>
-            </td>
-            <td>
-                <a href="/local/ajax/modal/modalTask.php<?=$getParams;?>" class="action_btn task_edit js_modal">
-                    <?php include 'local/templates/main/css/edit.svg';?>
-                </a>
-                <a href="/local/ajax/deleteTask.php" class="action_btn task_delete" data-task-id="<?=$task['ID']?>" data-task-name="<?=$task['NAME']?>">
-                    <?php include 'local/templates/main/css/delete.svg';?>
-                </a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
+                    $taskUsers = implode("&taskUsers[]=", $task['PROPERTIES']['TASKS_USERS']['VALUE']);
+                    $getParams = "?action=edit&id={$task['ID']}&taskName={$task['NAME']}&taskUsers[]={$taskUsers}&taskStatus={$task['PROPERTIES']['TASKS_STATUS']['VALUE']}&taskEnumID={$task['PROPERTIES']['TASKS_STATUS']['VALUE_ENUM_ID']}"; ?>
+
+                    <a href="/local/ajax/modal/modalTask.php<?=$getParams;?>" class="action_btn task_edit js_modal">
+                        <?php include 'local/templates/main/css/edit.svg';?>
+                    </a>
+                    <a href="/local/ajax/deleteTask.php" class="action_btn task_delete" data-task-id="<?=$task['ID']?>" data-task-name="<?=$task['NAME']?>">
+                        <?php include 'local/templates/main/css/delete.svg';?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
 </table>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">

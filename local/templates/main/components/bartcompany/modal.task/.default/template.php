@@ -29,18 +29,17 @@ use Bitrix\Main\Localization\Loc;
                     <label for="taskUser" class="form-label"><?=Loc::getMessage("TASK_USER");?></label>
                     <select class="form-select" multiple required name="taskUser[]" aria-label="Укажите исполнителя">
                         <?php foreach ($arResult['USERS'] as $user): ?>
-                            <option value="<?=$user['ID']?>"><?=$user['FULL_NAME']?></option>
+                            <option value="<?=$user['ID']?>" <?php if (in_array($user['ID'], $arParams[0]["TASK_USER"])) echo "selected"; ?>><?=$user['FULL_NAME']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="col-12">
                     <label for="workPosition" class="form-label"><?=Loc::getMessage("TASK_STATUS");?></label>
-                    <select class="form-select" required name="taskStatus" aria-label="Укажите статус">
-                        <option value="<?=$arParams[0]["TASK_STATUS"]?>">Открыта</option>
-                        <option value="1">Открыта</option>
-                        <option value="2">В работе</option>
-                        <option value="3">Завершена</option>
+                    <select class="form-select js-status-select" required name="taskStatus" aria-label="Укажите статус">
+                        <?php foreach ($arResult['STATUS_SELECT'] as $status): ?>
+                            <option value="<?=$status['VALUE']?>" <?=($arParams[0]["TASK_STATUS_ENUM_ID"] == $status['VALUE']) ? "selected" : ""; ?>><?=$status['NAME']?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
