@@ -1,5 +1,5 @@
 .padding-up {
-    padding-top: 100px;
+    padding-top: 10vh;
 }
 
 .action_btn {
@@ -21,8 +21,6 @@
     margin: 0 auto;
 }
 
-
-/*это затемнение экрана при вызове формы*/
 .modal_background{
     position: fixed;
     top: 0;
@@ -36,7 +34,7 @@
     align-items: center;
     justify-content: center;
 }
-/*это контейнер самой формы*/
+
 .modal_form{
     background: #ffffff;
     border-radius: 2px;
@@ -46,7 +44,7 @@
     display: flex;
     max-width: 100%;
 }
-/*это кнопка для закрытия формы*/
+
 a.close_form{
     position: absolute;
     right: 30px;

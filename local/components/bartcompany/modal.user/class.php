@@ -50,8 +50,6 @@ class BModalUser extends CBitrixComponent
                 "LAST_NAME" => $_POST['lastName'],
                 "WORK_POSITION" => $_POST['workPosition'],
                 "ACTIVE" => "Y",
-                "GROUP_ID" => array(2),
-
             );
             $ID = $user->Update($_POST['edit-user-form'], $fields);
 

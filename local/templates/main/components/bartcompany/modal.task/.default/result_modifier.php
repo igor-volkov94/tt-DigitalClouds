@@ -9,13 +9,15 @@
 
 $rsUser = CUser::GetList();
 while($arUser = $rsUser->Fetch()) {
-    $arResult['USERS'][] = array(
-        "ID" => $arUser['ID'],
-        "NAME" => $arUser['NAME'],
-        "LAST_NAME" => $arUser['LAST_NAME'],
-        "FULL_NAME" => $arUser['NAME'] . " " . $arUser['LAST_NAME'],
-        "WORK_POSITION" => $arUser['WORK_POSITION']
-    );
+    if ($arUser['ID'] != 1) {
+        $arResult['USERS'][] = array(
+            "ID" => $arUser['ID'],
+            "NAME" => $arUser['NAME'],
+            "LAST_NAME" => $arUser['LAST_NAME'],
+            "FULL_NAME" => $arUser['NAME'] . " " . $arUser['LAST_NAME'],
+            "WORK_POSITION" => $arUser['WORK_POSITION']
+        );
+    }
 }
 
 $property_enums = CIBlockPropertyEnum::GetList(Array("DEF"=>"DESC", "SORT"=>"ASC"), Array("IBLOCK_ID"=>2, "CODE"=>"TASKS_STATUS"));
