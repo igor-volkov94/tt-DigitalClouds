@@ -10,9 +10,8 @@ global $USER, $APPLICATION;
 $arResult['delete'] = false;
 
 if (isset($_POST)) {
-
     $arFilter = array("PROPERTY_TASKS_USERS" => $_POST['id']);
-    $arSelect = Array("ID", "IBLOCK_ID", "NAME", "PROPERTY_TASK_USER");
+    $arSelect = array("ID", "IBLOCK_ID", "NAME", "PROPERTY_TASK_USER");
 
     $res = CIBlockElement::GetList(
         false,
@@ -33,17 +32,13 @@ if (isset($_POST)) {
     $error = false;
 
     foreach ($arTaskUser as $task) {
-        if (count($task) >= 2 && in_array($_POST['id'], $task)) {
-            $error .= 1;
+        if (count($task) >= 2) {
+            CUser::Delete($_POST['id']);
+            $arResult = [ "delete" => "Y", "fullName" => $_POST["fullName"] ];
+        }  else {
+            $arResult = [ "delete" => "N", "fullName" => $_POST["fullName"] ];
         }
     }
 
-    if (!$error && empty($arTaskUser)) {
-        CUser::Delete($_POST['id']);
-        $arResult = [ "delete" => "Y", "fullName" => $_POST["fullName"] ];
-    } else {
-        $arResult = [ "delete" => "N", "fullName" => $_POST["fullName"] ];
-    }
     echo json_encode($arResult);
-
 }

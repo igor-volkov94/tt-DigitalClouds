@@ -39,10 +39,10 @@ use Bitrix\Main\Localization\Loc;
                 </td>
                 <td>
                     <?php foreach ($task['PROPERTIES']['TASKS_USERS']['VALUE'] as $users): ?>
-                        <?php
-                        $rsUser = CUser::GetByID($users);
-                        $arUser = $rsUser->Fetch();
-                        echo $arUser['NAME'] . " " . $arUser['LAST_NAME'] . "</br>";
+                        <?php $arUser = CUser::GetByID($users)->Fetch();
+                            if (!empty($arUser)) {
+                                echo $arUser['NAME'] . " " . $arUser['LAST_NAME'] . "</br>";
+                            }
                         ?>
                     <?php endforeach; ?>
                 </td>

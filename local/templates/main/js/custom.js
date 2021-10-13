@@ -1,6 +1,7 @@
 $(document).ready(function (){
     initActionDel();
     initTaskDel();
+
     //открытие формы
     $(document).on("click", ".js_modal", function(e) {
         initActionEdit();
@@ -67,6 +68,10 @@ function initActionDel () {
                     } else {
                         var messageError = "<div class=\"ui-alert ui-alert-danger js-alert\"><span class=\"ui-alert-message\">Пользователь " + res.fullName + " занят в задаче.</span></div>";
                         $('.padding-up').prepend(messageError);
+
+                        setTimeout(function () {
+                            $(".js-alert").remove();
+                        }, 2000);
                     }
 
                 }
@@ -100,6 +105,7 @@ function initActionEdit () {
                             success: function (res) {
                                 var a = $('.js-line-user', res);
                                 $('.js-line-user').html(a.html());
+
                                 initActionDel();
                             }
                         })
