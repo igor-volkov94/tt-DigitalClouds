@@ -1,5 +1,11 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+/**
+ * @global CMain $APPLICATION
+ * @var array $arParams
+ * @var array $arResult
+ **/
+
 $APPLICATION->SetTitle("Task Manager"); ?>
 
 <div class="container">
