@@ -1,5 +1,6 @@
 .vscode
 .access.php
+.idea
 /bitrix/
 /desktop_app/
 /pub/
